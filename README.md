@@ -1,59 +1,103 @@
-# DevReFactor
+# ReFactor
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.20.
+Este projeto foi gerado utilizando o [Angular CLI](https://github.com/angular/angular-cli) versão 21.2.20, e utiliza **TypeScript** como linguagem principal.
 
-## Development server
+## Pré-requisitos
 
-To start a local development server, run:
+Antes de começar, certifique-se de ter instalado em sua máquina:
+
+- [Node.js](https://nodejs.org/) (recomenda-se a versão LTS mais recente)
+- [npm](https://www.npmjs.com/) (já vem junto com o Node.js)
+- [Git](https://git-scm.com/) (opcional, apenas se for clonar o repositório via terminal)
+
+Para verificar se já possui o Node.js e o npm instalados, execute:
+
+```bash
+node -v
+npm -v
+```
+
+## Obtendo o projeto
+
+Você pode obter o projeto de duas formas:
+
+### Opção 1 — Clonando o repositório com Git
+
+```bash
+git clone https://github.com/TCC-ReFactor/ReFactor.git
+cd ReFactor
+```
+
+### Opção 2 — Baixando o arquivo .zip
+
+1. Acesse o repositório em [https://github.com/TCC-ReFactor/ReFactor](https://github.com/TCC-ReFactor/ReFactor)
+2. Clique no botão verde **Code**
+3. Selecione **Download ZIP**
+4. Extraia o arquivo `.zip` em uma pasta de sua preferência
+5. Abra o terminal dentro dessa pasta (a que contém o arquivo `package.json`)
+
+## Instalando as dependências
+
+Com o projeto em mãos e o terminal aberto na raiz do repositório, instale todos os pacotes necessários com o comando:
+
+```bash
+npm install
+```
+
+Esse comando irá ler o arquivo `package.json` e instalar automaticamente todas as dependências do projeto (incluindo o Angular, o TypeScript e demais bibliotecas utilizadas), criando a pasta `node_modules`.
+
+> Caso prefira uma instalação estritamente fiel às versões travadas no `package-lock.json`, utilize `npm ci` no lugar de `npm install`.
+
+## Executando o projeto (servidor de desenvolvimento)
+
+Após a instalação das dependências, inicie o servidor local de desenvolvimento com:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+ou, alternativamente, sem precisar do Angular CLI instalado globalmente:
 
 ```bash
-ng generate component component-name
+npm start
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Com o servidor em execução, abra o navegador e acesse:
+
+```
+http://localhost:4200/
+```
+
+A aplicação recarrega automaticamente sempre que algum arquivo do código-fonte é modificado.
+
+## Scaffolding de código
+
+O Angular CLI inclui ferramentas de scaffolding de código. Para gerar um novo componente, execute:
+
+```bash
+ng generate component nome-do-componente
+```
+
+Para ver a lista completa de opções disponíveis (como `components`, `directives` ou `pipes`), execute:
 
 ```bash
 ng generate --help
 ```
 
-## Building
+## Build
 
-To build the project run:
+Para compilar o projeto, execute:
 
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Isso irá compilar o projeto e armazenar os artefatos de build no diretório `dist/`. Por padrão, o build de produção otimiza a aplicação para desempenho e velocidade.
 
-## Running unit tests
+## Recursos adicionais
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Para mais informações sobre o uso do Angular CLI, incluindo referências detalhadas de comandos, visite a página [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli).
 
-```bash
-ng test
-```
+## Licença
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Este projeto está licenciado sob os termos da licença **GPL-3.0**. Consulte o arquivo [LICENSE](./LICENSE) para mais detalhes.
