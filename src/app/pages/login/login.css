@@ -437,7 +437,7 @@ h1, h2, h3 {
   justify-content: center;
   padding: clamp(1.25rem, 4vw, 3rem);
   background:
-    url("img/Fundo\ ReFactor\ \(Branco\).png") center/cover no-repeat;
+    url("/public/img/Fundo\ ReFactor\ \(Branco\).png") center/cover no-repeat;
 }
 
 .login-shell {
