@@ -1,0 +1,55 @@
+<html>
+
+<body>
+
+    <main class="login-page">
+        <div class="login-shell">
+
+            <!-- LADO ESQUERDO: FORMULÁRIO -->
+            <div class="login-side">
+                <div class="login-card">
+
+                    <div class="login-tabs" role="tablist" aria-label="Autenticação">
+                        <span class="login-tab is-active" role="tab" aria-selected="true"
+                            aria-current="page">Login</span>
+                        <a class="login-tab" href="cadastro.html" role="tab" aria-selected="false">Cadastro</a>
+                    </div>
+
+                    <!-- Formulário de Login -->
+
+                    <form class="login-form" novalidate>
+                        <input class="login-input" type="email" name="email" placeholder="E-mail:" autocomplete="email"
+                            required />
+                        <input class="login-input" type="password" name="senha" placeholder="Senha:"
+                            autocomplete="current-password" required />
+
+                        <div class="login-form-footer">
+                            <a href="#" class="login-link">Esqueceu a senha?</a>
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </div>
+                    </form>
+
+                    <p class="login-note"><a href="../Frontend/index.html">Voltar para o início</a></p>
+                </div>
+            </div>
+
+            <!-- LADO DIREITO: MARCA -->
+            <div class="login-brand">
+                <button id="theme-toggle" class="icon-btn login-brand-toggle" type="button"
+                    aria-label="Alternar tema claro/escuro">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z" stroke="currentColor"
+                            stroke-width="1.6" stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <a href="../Frontend/index.html">
+                    <img class="login-brand-logo" src="../Frontend/img/Logo.png" alt="ReFactor logo" />
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+
+</html>

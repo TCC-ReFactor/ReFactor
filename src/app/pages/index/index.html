@@ -1,0 +1,177 @@
+<html>
+
+<body>
+
+    <!-- ===== HEADER ===== -->
+
+    <header class="header">
+        <a href="#topo" class="logo" aria-label="ReFactor - página inicial">
+            <img class="logo-img" src="img/Logo (1).png" alt="ReFactor logo" />
+        </a>
+
+        <nav class="main-nav" aria-label="Navegação principal">
+            <a href="#feed">Feed</a>
+            <a href="#sobre">Sobre</a>
+        </nav>
+
+        <div class="header-actions">
+            <button id="theme-toggle" class="icon-btn" type="button" aria-label="Alternar tema claro/escuro">
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z" stroke="currentColor" stroke-width="1.6"
+                        stroke-linejoin="round" />
+                </svg>
+            </button>
+            <a href="../Cadastro/login.html" class="btn btn-outline" id="login-btn">Login</a>
+        </div>
+    </header>
+
+    <main id="topo">
+
+
+
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Descarte Inteligente,<br /><span class="hero-highlight">Futuro Sustentável.</span></h1>
+                <p class="hero-subtitle">
+                    Destine seus eletrônicos de forma segura, responsável e ajude a construir
+                    um mundo mais verde.
+                </p>
+                <div class="hero-cta">
+                    <a href="../Cadastro/cadastro.html" class="btn btn-primary" id="signup-btn">Criar conta grátis</a>
+                    <a href="#feed" class="btn btn-ghost">Ver publicações</a>
+                </div>
+            </div>
+
+            <div class="hero-art" aria-hidden="true">
+                <img src="img/Img_Principal.png" alt="Imagem principal da ReFactor" />
+            </div>
+        </section>
+
+        <!-- ===== FEED / CAROUSEL ===== -->
+
+        <section class="feed" id="feed">
+            <div class="feed-heading">
+                <h2>Publicações recentes</h2>
+                <p>O que a comunidade está destinando para reciclagem agora</p>
+            </div>
+
+            <div class="carousel-wrap">
+                <button class="carousel-btn carousel-prev" id="carousel-prev" aria-label="Publicação anterior">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </button>
+
+                <ul class="carousel-track" id="carousel-track">
+                    <li class="post-card">
+                        <div class="post-body">
+                            <p class="post-title">Notebook Lenovo</p>
+                            <p class="post-meta">Publicado por Rafael S.</p>
+                            <a class="post-link" href="#">Ver mais...</a>
+                        </div>
+                    </li>
+
+                    <li class="post-card">
+                        <div class="post-body">
+                            <p class="post-title">Computador ThinkCentre</p>
+                            <p class="post-meta">Publicado por Larissa M.</p>
+                            <a class="post-link" href="#">Ver mais...</a>
+                        </div>
+                    </li>
+
+                    <li class="post-card">
+                        <div class="post-body">
+                            <p class="post-title">Notebook Positivo</p>
+                            <p class="post-meta">Publicado por Gabriel T.</p>
+                            <a class="post-link" href="#">Ver mais...</a>
+                        </div>
+                    </li>
+
+                    <li class="post-card">
+                        <div class="post-body">
+                            <p class="post-title">Computador Positivo</p>
+                            <p class="post-meta">Publicado por Camila A.</p>
+                            <a class="post-link" href="#">Ver mais...</a>
+                        </div>
+                    </li>
+
+                    <li class="post-card">
+                        <div class="post-body">
+                            <p class="post-title">Smartphone Motorola</p>
+                            <p class="post-meta">Publicado por Rafael S.</p>
+                            <a class="post-link" href="#">Ver mais...</a>
+                        </div>
+                    </li>
+                </ul>
+
+                <button class="carousel-btn carousel-next" id="carousel-next" aria-label="Próxima publicação">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </button>
+            </div>
+
+            <div class="carousel-dots" id="carousel-dots"></div>
+        </section>
+
+        <!-- SOBRE -->
+
+        <section class="sobre" id="sobre">
+            <div class="sobre-heading">
+                <span class="titulo">Sobre a ReFactor</span>
+                <h2>Quem faz o descarte consciente acontecer</h2>
+                <p>
+                    Somos um grupo de estudantes apaixonados por tecnologia e sustentabilidade.
+                    A ReFactor nasceu para tornar o descarte de eletrônicos simples, seguro e
+                    transparente, conectando quem quer se desfazer de um aparelho com quem sabe
+                    reciclá-lo do jeito certo.
+                </p>
+            </div>
+
+            <ul class="team-grid">
+
+                <li class="team-card">
+                    <div class="team-avatar" style="--avatar-a:#4CAF6B;--avatar-b:#1f6b3a;">CE</div>
+                    <h3>Carlos Eduardo</h3>
+                </li>
+
+                <li class="team-card">
+                    <div class="team-avatar">
+                        <img src="img/GR.jpeg" alt="Gabriel Reis" />
+                    </div>
+                    <h3>Gabriel Reis</h3>
+                </li>
+
+                <li class="team-card">
+                    <div class="team-avatar" style="--avatar-a:#8fdba7;--avatar-b:#38916a;">JV</div>
+                    <h3>João Vitor</h3>
+                </li>
+
+                <li class="team-card">
+                    <div class="team-avatar" style="--avatar-a:#4CAF6B;--avatar-b:#0f4d29;">LF</div>
+                    <h3>Luiz Fernando</h3>
+                </li>
+
+                <li class="team-card">
+                    <div class="team-avatar" style="--avatar-a:#4CAF6B;--avatar-b:#0f4d29;">VH</div>
+                    <h3>Vitor Hugo</h3>
+                </li>
+
+            </ul>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-logo">
+            <img class="logo-img" src="img/Logo (1).png" alt="ReFactor logo" />
+        </div>
+        <p>&copy; 2026 ReFactor. Descarte inteligente, futuro sustentável.</p>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
