@@ -1,8 +1,9 @@
 import { Component } from "@angular/core";
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: "app-cadastro",
-  imports: [],
+  imports: [NgOptimizedImage],
   templateUrl: "./cadastro.html",
   styleUrl: "./cadastro.css",
 })
