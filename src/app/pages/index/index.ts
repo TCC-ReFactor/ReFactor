@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Router } from 'express';
-import { NgOptimizedImage } from '@angular/common';
+
 
 @Component({
   selector: 'app-index',
-  imports: [RouterOutlet, NgOptimizedImage],
+  imports: [RouterOutlet],
   templateUrl: './index.html',
   styleUrl: './index.css',
 })
