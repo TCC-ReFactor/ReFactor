@@ -7,7 +7,10 @@ import { Router } from 'express';
   selector: 'app-index',
   imports: [RouterOutlet],
   templateUrl: './index.html',
-  styleUrl: './index.css',
+  styleUrls: [
+    './index.css',
+    '../app/app.css'
+  ],
 })
 export class Index {
   

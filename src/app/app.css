@@ -1,0 +1,51 @@
+:root {
+  --verde-950: #0b2a17; 
+  --verde-900: #0f3a20;
+  --verde-800: #14512c;
+  --verde-700: #1c6b3a;
+  --verde-500: #37C261;
+  --verde-400: #7fd996;
+  --verde-200: #b6ffc1;
+  --verde-100: #eaf7ee;
+
+  --texto: #10241a;        
+  --fundo: #f6f8f5;        
+  --fundo-alt: #eef2ec;    
+  --branco: #ffffff;        
+  --cinza-texto: #6b7d70;  
+  --cinza-claro: #b7c3ba;  
+
+  --fonte-titulo: "Space Grotesk", "Inter", sans-serif; 
+  --fonte-texto: "Inter", system-ui, sans-serif;       
+
+  --raio-lg: 18px; /* cards e blocos grandes */
+  --raio-md: 12px; /* cards médios (ex: post-card) */
+  --raio-sm: 8px;  /* elementos pequenos (ex: botões, inputs) */
+
+  --sombra-card: 0 10px 30px -12px rgba(15, 58, 32, 0.35); 
+  --transicao: 0.25s ease; 
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--fonte-texto);
+  color: var(--texto);
+  background: var(--fundo);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: inherit; text-decoration: none; }
+
+ul { list-style: none; margin: 0; padding: 0; }
+
+h1, h2, h3 {
+  font-family: var(--fonte-titulo);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
