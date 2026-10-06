@@ -6,8 +6,7 @@ import { Component } from "@angular/core";
   imports: [],
   templateUrl: "./cadastro.html",
   styleUrls: [
-    "./cadastro.css",
-    "../app/app.css"
+    "./cadastro.css"
   ],
 })
 export class Cadastro {}

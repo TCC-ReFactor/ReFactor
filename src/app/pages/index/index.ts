@@ -8,8 +8,7 @@ import { Router } from 'express';
   imports: [RouterOutlet],
   templateUrl: './index.html',
   styleUrls: [
-    './index.css',
-    '../app/app.css'
+    './index.css'
   ],
 })
 export class Index {
