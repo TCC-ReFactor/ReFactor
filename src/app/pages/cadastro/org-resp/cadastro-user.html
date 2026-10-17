@@ -63,13 +63,24 @@
                             placeholder="Bairro"
                             aria-label="Bairro" />
                         <div class="login-form-row login-form-row--location">
+                            <input class="login-input" type="text" name="cidade"
+                                [(ngModel)]="organization.cidade" placeholder="Cidade"
+                                aria-label="Cidade" autocomplete="address-level2" />
                             <input class="login-input" type="text" name="uf" [(ngModel)]="organization.uf"
                                 placeholder="UF"
                                 aria-label="UF" autocomplete="address-level1" />
                             <input class="login-input" type="text" name="cep" [(ngModel)]="organization.cep"
                                 placeholder="CEP"
-                                aria-label="CEP" autocomplete="postal-code" />
+                                aria-label="CEP" autocomplete="postal-code" inputmode="numeric" maxlength="9"
+                                (blur)="lookupAddressByCep()" />
                         </div>
+                        @if (isLookingUpCep) {
+                        <p class="cep-lookup-feedback" role="status">Consultando CEP...</p>
+                        } @else if (cepLookupError) {
+                        <p class="cep-lookup-feedback cep-lookup-feedback--error" role="alert">{{ cepLookupError }}</p>
+                        } @else if (cepLookupMessage) {
+                        <p class="cep-lookup-feedback" role="status">{{ cepLookupMessage }}</p>
+                        }
 
                         <div class="login-form-footer login-form-footer--end">
                             <button class="btn btn-primary" type="button"

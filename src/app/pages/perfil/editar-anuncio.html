@@ -1,0 +1,49 @@
+<main class="edit-page">
+  <a class="back-link" routerLink="/perfil">Voltar ao meu perfil</a>
+  <h1>Editar anúncio</h1>
+
+  @if (isLoading) {
+    <p role="status">Carregando anúncio...</p>
+  } @else if (errorMessage && !ad) {
+    <p class="edit-error" role="alert">{{ errorMessage }}</p>
+  } @else if (ad) {
+    <form class="edit-form" (ngSubmit)="save()">
+      <label>
+        Título
+        <input name="title" [(ngModel)]="ad.title" required />
+      </label>
+
+      <label>
+        Descrição
+        <textarea name="description" [(ngModel)]="ad.description" required></textarea>
+      </label>
+
+      <label>
+        Preço
+        <input
+          name="price"
+          type="number"
+          min="0"
+          step="0.01"
+          [(ngModel)]="ad.price"
+        />
+      </label>
+
+      <label>
+        Condição
+        <input name="condition" [(ngModel)]="ad.condition" />
+      </label>
+
+      @if (errorMessage) {
+        <p class="edit-error" role="alert">{{ errorMessage }}</p>
+      }
+      @if (saved) {
+        <p class="edit-success" role="status">Anúncio atualizado.</p>
+      }
+
+      <button type="submit" [disabled]="isSaving">
+        {{ isSaving ? "Salvando..." : "Salvar alterações" }}
+      </button>
+    </form>
+  }
+</main>

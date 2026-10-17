@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 
 import { Index } from './index';
 
@@ -8,7 +9,8 @@ describe('Index', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Index]
+      imports: [Index],
+      providers: [provideRouter([])]
     })
     .compileComponents();
 

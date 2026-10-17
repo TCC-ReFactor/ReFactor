@@ -8,20 +8,26 @@
                     <div class="login-tabs" role="tablist" aria-label="Autenticação">
                         <span class="login-tab is-active" role="tab" aria-selected="true"
                             aria-current="page">Login</span>
-                        <a class="login-tab" routerLink="/cadastro-user" role="tab" aria-selected="false">CadastroUser</a>
+                        <a class="login-tab" routerLink="/cadastro-user" role="tab" aria-selected="false">Cadastro</a>
                     </div>
 
                     <!-- Formulário de Login -->
 
-                    <form class="login-form" novalidate>
-                        <input class="login-input" type="email" name="email" placeholder="E-mail:" autocomplete="email"
-                            required />
+                    <form class="login-form" (ngSubmit)="submitLogin()">
+                        <input class="login-input" type="text" name="login" placeholder="Login:" autocomplete="username"
+                            [(ngModel)]="login" required />
                         <input class="login-input" type="password" name="senha" placeholder="Senha:"
-                            autocomplete="current-password" required />
+                            autocomplete="current-password" [(ngModel)]="senha" required />
+
+                        @if (errorMessage) {
+                            <p class="login-error" role="alert">{{ errorMessage }}</p>
+                        }
 
                         <div class="login-form-footer">
                             <a href="#" class="login-link">Esqueceu a senha?</a>
-                            <button type="submit" class="btn btn-primary">Login</button>
+                            <button type="submit" class="btn btn-primary" [disabled]="isSubmitting">
+                                {{ isSubmitting ? "Entrando..." : "Login" }}
+                            </button>
                         </div>
                     </form>
 
@@ -42,6 +48,5 @@
                     <img class="login-brand-logo" src="/img/refac_logo.png" alt="ReFactor logo" />
                 </a>
             </div>
-
         </div>
     </main>

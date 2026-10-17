@@ -1,0 +1,71 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: var(--fundo, #f5f7f5);
+  color: var(--texto, #1d2921);
+}
+
+.edit-page {
+  display: grid;
+  gap: 1.25rem;
+  width: min(100% - 2rem, 720px);
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.back-link {
+  color: var(--verde-900, #164b32);
+}
+
+.edit-form {
+  display: grid;
+  gap: 1rem;
+  padding: 1.5rem;
+  border: 1px solid #dce5dd;
+  border-radius: 0.75rem;
+  background: #fff;
+}
+
+.edit-form label {
+  display: grid;
+  gap: 0.4rem;
+  font-weight: 600;
+}
+
+.edit-form input,
+.edit-form textarea {
+  width: 100%;
+  padding: 0.7rem;
+  border: 1px solid #b8c9bc;
+  border-radius: 0.4rem;
+  font: inherit;
+}
+
+.edit-form textarea {
+  min-height: 8rem;
+  resize: vertical;
+}
+
+.edit-form button {
+  justify-self: start;
+  padding: 0.7rem 1.2rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--verde-700, #28784e);
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+
+.edit-form button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.edit-error {
+  color: #a12121;
+}
+
+.edit-success {
+  color: #17653b;
+}

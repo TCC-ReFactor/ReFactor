@@ -19,10 +19,10 @@ Thumbs.db
 
 # IDE
 .vscode/
-.idea//.angular/cache
 
 # Arquivos de desenvolvimento
 Desenvolvimento_diario.docx
 
 # Arquivos Temp
 script
+.idea/

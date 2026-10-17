@@ -481,9 +481,12 @@ h1, h2, h3 {
   gap: 0.75rem;
 }
 
-.login-form-row--phone,
-.login-form-row--location {
+.login-form-row--phone {
   grid-template-columns: minmax(4.25rem, 0.28fr) minmax(0, 1fr);
+}
+
+.login-form-row--location {
+  grid-template-columns: minmax(0, 1fr) minmax(4.25rem, 0.28fr) minmax(0, 1fr);
 }
 
 .login-form-row--address {
@@ -531,6 +534,16 @@ h1, h2, h3 {
 
 .login-input:focus {
   box-shadow: 0 0 0 2px var(--verde-400);
+}
+
+.cep-lookup-feedback {
+  margin: -0.4rem 0 0;
+  font-size: 0.82rem;
+  color: var(--verde-200);
+}
+
+.cep-lookup-feedback--error {
+  color: #b42318;
 }
 
 .login-form-footer {

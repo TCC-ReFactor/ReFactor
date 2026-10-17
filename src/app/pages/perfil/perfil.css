@@ -1,0 +1,101 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: var(--fundo, #f5f7f5);
+  color: var(--texto, #1d2921);
+}
+
+.account-page {
+  width: min(100% - 2rem, 960px);
+  margin: 0 auto;
+  padding-bottom: 3rem;
+}
+
+.account-header {
+  min-height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.account-header > a {
+  color: var(--verde-900, #164b32);
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.account-content {
+  display: grid;
+  gap: 1.5rem;
+  padding-top: 1.5rem;
+}
+
+.account-content h1,
+.account-content h2,
+.account-content h3 {
+  margin: 0;
+}
+
+.profile-card,
+.ad-card {
+  padding: 1.25rem;
+  border: 1px solid #dce5dd;
+  border-radius: 0.75rem;
+  background: #fff;
+}
+
+.profile-card p,
+.ad-card p {
+  margin: 0.5rem 0 0;
+}
+
+.ads-section {
+  display: grid;
+  gap: 1rem;
+}
+
+.ads-list {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ad-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.account-button {
+  display: inline-flex;
+  justify-content: center;
+  padding: 0.65rem 1rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--verde-700, #28784e);
+  color: #fff;
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.account-button--secondary {
+  border: 1px solid #b8c9bc;
+  background: transparent;
+  color: inherit;
+}
+
+.account-error {
+  color: #a12121;
+}
+
+@media (max-width: 600px) {
+  .ad-card {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

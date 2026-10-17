@@ -1,1 +1,53 @@
-<p>perfil works!</p>
+<main class="account-page">
+  <header class="account-header">
+    <a routerLink="/index">ReFactor</a>
+    <button type="button" class="account-button account-button--secondary" (click)="logout()">
+      Sair
+    </button>
+  </header>
+
+  <section class="account-content" aria-labelledby="profile-title">
+    <h1 id="profile-title">Meu perfil</h1>
+
+    @if (isLoading) {
+      <p role="status">Carregando seu perfil...</p>
+    } @else if (errorMessage) {
+      <p class="account-error" role="alert">{{ errorMessage }}</p>
+    } @else if (profile) {
+      <section class="profile-card" aria-label="Dados do usuário">
+        <h2>{{ profile.nome || profile.login }}</h2>
+        <p>Login: {{ profile.login }}</p>
+        @if (profile.email) {
+          <p>E-mail: {{ profile.email }}</p>
+        }
+      </section>
+
+      <section class="ads-section" aria-labelledby="ads-title">
+        <h2 id="ads-title">Meus anúncios</h2>
+        @if (ads.length === 0) {
+          <p>Você ainda não possui anúncios.</p>
+        } @else {
+          <ul class="ads-list">
+            @for (ad of ads; track ad.id) {
+              <li class="ad-card">
+                <div>
+                  <h3>{{ ad.title }}</h3>
+                  <p>{{ ad.description }}</p>
+                  @if (ad.price !== undefined) {
+                    <p>{{ ad.price | currency: "BRL" }}</p>
+                  }
+                </div>
+                <a
+                  class="account-button"
+                  [routerLink]="['/anuncios', ad.id, 'editar']"
+                >
+                  Editar anúncio
+                </a>
+              </li>
+            }
+          </ul>
+        }
+      </section>
+    }
+  </section>
+</main>
