@@ -10,7 +10,7 @@ export const serverRoutes: ServerRoute[] = [
     renderMode: RenderMode.Prerender
   },
   {
-    path: 'cadastro',
+    path: 'cadastro-user',
     renderMode: RenderMode.Prerender
   },
   {

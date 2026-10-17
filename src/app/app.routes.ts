@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
 import { Index } from './pages/index';
-import { Cadastro } from './pages/cadastro/cadastro';
+import { CadastroUser } from './pages/cadastro-user/cadastro-user';
 import { Login } from './pages/login/login';
 
 export const routes: Routes = [
     { path: 'index', component: Index },
-    { path: 'cadastro', component: Cadastro },
+    { path: 'cadastro-user', component: CadastroUser },
     { path: 'login', component: Login },
     { path: '', redirectTo: 'index', pathMatch: 'full' }
 ];
