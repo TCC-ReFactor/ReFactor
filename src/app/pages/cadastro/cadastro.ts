@@ -5,6 +5,8 @@ import { Component } from "@angular/core";
   selector: "app-cadastro",
   imports: [],
   templateUrl: "./cadastro.html",
-  styleUrl: "./cadastro.css",
+  styleUrls: [
+    "./cadastro.css"
+  ],
 })
 export class Cadastro {}
