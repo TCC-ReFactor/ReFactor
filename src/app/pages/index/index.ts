@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { Router } from 'express';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-index',
-  imports: [RouterOutlet],
+  imports: [RouterLink],
   templateUrl: './index.html',
   styleUrls: [
     './index.css'
