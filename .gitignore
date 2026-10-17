@@ -1,5 +1,6 @@
 # Dependências
 node_modules/
+.angular
 
 # Builds
 dist/
@@ -23,3 +24,5 @@ Thumbs.db
 # Arquivos de desenvolvimento
 Desenvolvimento_diario.docx
 
+# Arquivos Temp
+script
