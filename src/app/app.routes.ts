@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { Index } from './pages/index';
-import { CadastroUser } from './pages/cadastro-user/cadastro-user';
+import { CadastroUser } from './pages/cadastro/org-resp/cadastro-user';
 import { Login } from './pages/login/login';
 
 export const routes: Routes = [
