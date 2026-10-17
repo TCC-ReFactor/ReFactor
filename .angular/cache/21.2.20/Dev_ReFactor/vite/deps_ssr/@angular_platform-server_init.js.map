@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../../../../../node_modules/@angular/platform-server/fesm2022/init.mjs"],
-  "sourcesContent": ["/**\n * @license Angular v21.2.19\n * (c) 2010-2026 Google LLC. https://angular.dev/\n * License: MIT\n */\n\nimport domino from '../third_party/domino/bundled-domino.mjs';\n\nfunction applyShims() {\n  Object.assign(globalThis, domino.impl);\n  globalThis['KeyboardEvent'] = domino.impl.Event;\n}\n\napplyShims();\n\nconst ɵɵmoduleMarker = true;\n\nexport { ɵɵmoduleMarker };\n\n"],
-  "mappings": ";;;;;;;AAQA,SAAS,aAAa;AACpB,SAAO,OAAO,YAAY,MAAO,IAAI;AACrC,aAAW,eAAe,IAAI,MAAO,KAAK;AAC5C;AAEA,WAAW;AAEX,IAAM,iBAAiB;",
-  "names": []
-}
