@@ -1,1 +1,182 @@
-<p>item works!</p>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastrar Item</title>
+    <link rel="stylesheet" href="item.css" />
+    <link rel="stylesheet" href="../../../../styles.css" />
+    <link rel="stylesheet" href="../../feed/feed.css" />
+</head>
+
+<body>
+    <div class="page-container">
+        <header class="site-header site-header--app">
+
+            <a href="step-2-lot.html" class="back-link" aria-label="Voltar para o feed">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+                <p>Cadastrar Item</p>
+            </a>
+
+            <div class="site-header__actions">
+                <button id="theme-toggle" class="icon-button" type="button" aria-label="Alternar tema claro/escuro">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z" stroke="currentColor"
+                            stroke-width="1.6" stroke-linejoin="round" />
+                    </svg>
+                </button>
+            </div>
+        </header>
+        <main class="ad-create-page">
+
+            <section class="ad-create__form-section">
+
+                <form class="ad-create__form">
+                    <div class="form-row">
+                        <div class="form-field">
+
+                            <label for="item-type">
+                                <h2>Tipo do Item</h2>
+                            </label>
+
+                            <input id="item-type" type="text" placeholder="Ex: Notebooks Lenovo">
+
+                        </div>
+
+                        <div class="form-field">
+
+                            <label for="item-brand">
+                                <h2>Marca:</h2>
+                            </label>
+
+                            <input id="item-brand" type="text" placeholder="Ex: Notebooks Lenovo">
+                        </div>
+
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-field">
+
+                            <label for="item-serial-number">
+                                <h2>N° Série:</h2>
+                            </label>
+
+                            <input id="item-serial-number" type="number" max="10000" min="1" />
+
+                        </div>
+
+                        <div class="form-field">
+
+                            <label for="item-model">
+                                <h2>Modelo:</h2>
+                            </label>
+
+                            <input id="item-model" type="number" max="10000" min="1" />
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-field">
+
+                        <label for="item-quantity">
+                            <h2>Quantidade</h2>
+                        </label>
+
+                        <input id="item-quantity" type="number" max="10000" min="1" />
+
+                    </div>
+
+                    <div class="form-field">
+
+                        <label for="item-notes">
+                            <h2>Observações</h2>
+                        </label>
+
+                        <textarea id="item-notes">
+                        </textarea>
+
+                    </div>
+                    <div class="form-actions">
+                        <button class="previous-button" type="submit">
+
+                            <a href="step-2-lot.html">Voltar</a>
+
+                        </button>
+
+                        <button class="next-button" type="submit">
+
+                            <a href="step-4-component.html">Avançar</a>
+
+                        </button>
+                    </div>
+
+                </form>
+
+            </section>
+
+            <aside class="ad-create__sidebar">
+                <div class="stepper">
+
+                    <div class="stepper__step ">
+
+                        <div class="stepper__circle is-active">
+                            <img class="stepper__check-icon" src="../../img/icon-check.svg" alt="">
+                        </div>
+
+                        <p>
+                            Cadastro
+                            <br>
+                            de Lote
+                        </p>
+
+                    </div>
+
+                    <div class="stepper__line"></div>
+
+                    <div class="stepper__step is-active">
+
+                        <div class="stepper__circle">
+                            2
+                        </div>
+
+                        <p>
+                            Cadastro
+                            <br>
+                            de Itens
+                        </p>
+
+                    </div>
+
+                    <div class="stepper__line"></div>
+
+                    <div class="stepper__step">
+
+                        <div class="stepper__circle">
+                            3
+                        </div>
+
+                        <p>
+                            Cadastro de
+                            <br>
+                            Componentes
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </aside>
+
+            <div class="ad-create__accent-bar"></div>
+
+        </main>
+
+    </div>
+</body>
+
+</html>

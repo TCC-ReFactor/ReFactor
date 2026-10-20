@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PTP - Anúncio</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+  <link rel="stylesheet" href="feed.css" />
+</head>
+<body>
+
+  <!--  HEADER (fixo, igual às demais páginas)  -->
+
+  <header class="site-header site-header--app">
+    <a href="../index.html#top" class="site-logo" aria-label="ReFactor - página inicial">
+      <img class="site-logo__image" src="../../../assets/img/Logo (1).png" alt="ReFactor logo" />
+    </a>
+
+    <form class="search-form" role="search" aria-label="Pesquisar anúncios" onsubmit="return false;">
+      <svg class="search-form__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/>
+        <path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+      <input class="search-form__input" type="search" id="search-input" placeholder="Pesquisar anúncios..." aria-label="Pesquisar anúncios" />
+    </form>
+
+    <div class="site-header__actions">
+      <!-- Acesso à página de criação de anúncios -->
+      <a href="#" class="btn btn--outline btn--create-ad" id="create-ad-link" aria-label="Criar novo anúncio">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Anunciar
+      </a>
+
+      <!-- Acesso ao perfil do usuário -->
+      <a href="#" class="user-avatar" id="profile-link" aria-label="Meu perfil" style="--avatar-a:#8fdba7;--avatar-b:#1c6b3a;">VH</a>
+
+      <button id="theme-toggle" class="icon-button" type="button" aria-label="Alternar tema claro/escuro">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="ad-detail-page">
+    <div class="ad-detail">
+
+      <!--  BARRA DE VOLTAR  -->
+
+      <div class="ad-detail__topbar">
+        <a href="index.html" class="back-link" aria-label="Voltar para o feed">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Anúncio
+        </a>
+      </div>
+
+      <!--  CONTEÚDO  -->
+      <div class="ad-detail__content" id="ad-detail-content">
+        <p class="ad-detail__loading">Carregando anúncio...</p>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="js/ads-data.js"></script>
+  <script src="js/ad-detail.js"></script>
+</body>
+</html>

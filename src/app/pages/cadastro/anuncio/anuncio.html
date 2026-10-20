@@ -1,1 +1,125 @@
-<p>anuncio works!</p>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastrar Anúncio</title>
+    <link rel="stylesheet" href="anuncio.css" />
+    <link rel="stylesheet" href="../../../../styles.css" />
+    <link rel="stylesheet" href="../../feed/feed.css" />
+</head>
+
+<body>
+    <div class="page-container">
+        <header class="site-header site-header--app">
+
+            <a href="../feed/index.html" class="back-link" aria-label="Voltar para o feed">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+                <p>Cadastrar Anúncio</p>
+            </a>
+
+            <div class="site-header__actions">
+                <button id="theme-toggle" class="icon-button" type="button" aria-label="Alternar tema claro/escuro">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z" stroke="currentColor"
+                            stroke-width="1.6" stroke-linejoin="round" />
+                    </svg>
+                </button>
+            </div>
+        </header>
+        <main class="ad-create-page">
+
+            <section class="ad-create__form-section">
+
+                <form class="ad-create__form">
+
+                    <div class="form-field">
+
+                        <label for="ad-title">
+                            <h2>Título do Anúncio</h2>
+                        </label>
+
+                        <input id="ad-title" type="text" placeholder="Ex: Notebooks Lenovo">
+
+                    </div>
+
+                    <div class="photo-upload">
+
+                        <label class="photo-upload__box">
+
+                            <input type="file" hidden>
+                            <img src="../../img/icon-photo.png" alt="">
+                        </label>
+
+                        <label class="photo-upload__box">
+
+                            <input type="file" hidden>
+                            <img src="../../img/icon-photos.png" alt="">
+                        </label>
+
+                    </div>
+
+                    <div class="form-field">
+
+                        <label for="ad-condition">
+                            <h2>Condição</h2>
+                        </label>
+
+                        <select id="ad-condition">
+
+                            <option>
+                                Selecione
+                            </option>
+
+                            <option>
+                                Novo
+                            </option>
+
+                            <option>
+                                Seminovo
+                            </option>
+
+                            <option>
+                                Usado
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="form-field">
+
+                        <label for="ad-description">
+                            <h2>Descrição do Produto</h2>
+                        </label>
+
+                        <textarea id="ad-description">
+                        </textarea>
+
+                    </div>
+
+                    <button class="next-button" type="submit">
+
+
+                        <a href="step-2-lot.html">
+                            Avançar
+                        </a>
+                    </button>
+
+                </form>
+
+            </section>
+
+            <aside class="ad-create__sidebar"></aside>
+
+        </main>
+
+    </div>
+</body>
+
+
+</html>

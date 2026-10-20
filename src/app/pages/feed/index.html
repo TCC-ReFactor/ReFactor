@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feed | ReFactor</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+  <link rel="stylesheet" href="feed.css" />
+</head>
+<body>
+
+
+  <header class="site-header site-header--app">
+    <a href="../index.html#top" class="site-logo" aria-label="ReFactor - página inicial">
+      <img class="site-logo__image" src="../../../assets/img/Logo (1).png" alt="ReFactor logo" />
+    </a>
+
+    <form class="search-form" role="search" aria-label="Pesquisar anúncios" onsubmit="return false;">
+      <svg class="search-form__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/>
+        <path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+      <input class="search-form__input" type="search" id="search-input" placeholder="Pesquisar anúncios..." aria-label="Pesquisar anúncios" />
+    </form>
+
+    <div class="site-header__actions">
+      <!-- Acesso à página de criação de anúncios -->
+
+      <a href="../ad-create/step-1-ad.html" class="btn btn--outline btn--create-ad" id="create-ad-link" aria-label="Criar novo anúncio">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Anunciar
+      </a>
+
+      <!-- Acesso ao perfil do usuário -->
+
+      <a href="../profile/index.html" class="user-avatar" id="profile-link" aria-label="Meu perfil" style="--avatar-a:#8fdba7;--avatar-b:#1c6b3a;">VH</a>
+
+      <button id="theme-toggle" class="icon-button" type="button" aria-label="Alternar tema claro/escuro">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="feed-page">
+    <div class="section-heading">
+      <h1>Anúncios</h1>
+      <p>Encontre eletrônicos usados, prontos para ganhar uma nova vida.</p>
+    </div>
+
+    <div class="feed-layout">
+
+      <!-- FEED DE ANÚNCIOS  -->
+      <section class="feed-list" aria-label="Lista de anúncios">
+        <ul class="ad-list" id="ad-list">
+
+          <!-- Os cards de anúncio são inseridos aqui via JavaScript -->
+
+        </ul>
+      </section>
+
+      <!-- SIDEBAR: ORDENAÇÃO E FILTROS -->
+      <aside class="feed-sidebar" aria-label="Ordenar e filtrar anúncios">
+
+        <details class="filter-group" open>
+          <summary>
+            Ordenar
+            <svg class="filter-group__chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </summary>
+          <div class="filter-group__body">
+            <select class="filter-group__select" id="sort-select" aria-label="Ordenar anúncios por">
+              <option value="relevantes">Mais relevantes</option>
+              <option value="recentes">Mais recentes</option>
+              <option value="antigos">Mais antigos</option>
+            </select>
+          </div>
+        </details>
+
+        <details class="filter-group" open>
+          <summary>
+            Preço
+            <svg class="filter-group__chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </summary>
+          <div class="filter-group__body">
+            <select class="filter-group__select" id="price-select" aria-label="Ordenar por preço">
+              <option value="decrescente">Decrescente</option>
+              <option value="crescente">Crescente</option>
+            </select>
+          </div>
+        </details>
+
+        <details class="filter-group" open>
+          <summary>
+            Categorias
+            <svg class="filter-group__chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </summary>
+          <div class="filter-group__body filter-group__checks" id="category-filters">
+            <label><input type="checkbox" name="categoria" value="notebook" checked /> Notebook</label>
+            <label><input type="checkbox" name="categoria" value="desktop" checked /> Desktop</label>
+            <label><input type="checkbox" name="categoria" value="monitores" checked /> Monitores</label>
+            <label><input type="checkbox" name="categoria" value="componentes" checked /> Componentes</label>
+            <label><input type="checkbox" name="categoria" value="perifericos" checked /> Periféricos</label>
+          </div>
+        </details>
+
+        <details class="filter-group" open>
+          <summary>
+            Condição
+            <svg class="filter-group__chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </summary>
+          <div class="filter-group__body filter-group__checks" id="condition-filters">
+            <label><input type="checkbox" name="condicao" value="novo" /> Novo</label>
+            <label><input type="checkbox" name="condicao" value="usado" checked /> Usado</label>
+            <label><input type="checkbox" name="condicao" value="avarias" checked /> Com avarias</label>
+          </div>
+        </details>
+
+      </aside>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__logo">
+      <img class="site-logo__image" src="../../../assets/img/Logo (1).png" alt="ReFactor logo" />
+    </div>
+    <p>&copy; 2026 ReFactor. Descarte inteligente, futuro sustentável.</p>
+  </footer>
+
+  <script src="js/ads-data.js"></script>
+  <script src="js/feed.js"></script>
+</body>
+</html>
