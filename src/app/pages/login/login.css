@@ -408,8 +408,7 @@ h1, h2, h3 {
   align-items: center;
   justify-content: center;
   padding: clamp(1.25rem, 4vw, 3rem);
-  background:
-    url("/public/img/Fundo\ ReFactor\ \(Branco\).png") center/cover no-repeat;
+  background: url("/img/refac_wallpaper.png") center/cover no-repeat;
 }
 
 .login-shell {
