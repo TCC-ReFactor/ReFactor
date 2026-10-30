@@ -1,7 +1,3 @@
-<html>
-
-<body>
-
     <main class="login-page">
         <div class="login-shell">
 
@@ -13,26 +9,97 @@
                     <div class="login-tabs" role="tablist" aria-label="Autenticação">
                         <a class="login-tab" routerLink="/login" role="tab" aria-selected="false">Login</a>
                         <span class="login-tab is-active" role="tab" aria-selected="true"
-                            aria-current="page">CadastroUser</span>
+                            aria-current="page">Cadastro</span>
                     </div>
 
-                    <!-- CadastroUser: Etapa 1 - dados pessoais -->
+                    @if (currentStep === 1) {
+                    <form class="login-form" aria-label="Cadastro de organização" novalidate
+                        (submit)="$event.preventDefault()">
+                        <input class="login-input" type="text" name="razaoSocial" [(ngModel)]="organization.razaoSocial"
+                            placeholder="Razão Social"
+                            aria-label="Razão Social" autocomplete="organization" />
+                        <input class="login-input" type="text" name="nomeFantasia" [(ngModel)]="organization.nomeFantasia"
+                            placeholder="Nome Fantasia"
+                            aria-label="Nome Fantasia" />
+                        <input class="login-input" type="text" name="cnpj" [(ngModel)]="organization.cnpj"
+                            placeholder="CNPJ" aria-label="CNPJ" autocomplete="off" />
+                        <input class="login-input" type="text" name="ramoAtuacao" [(ngModel)]="organization.ramoAtuacao"
+                            placeholder="Ramo de Atuação"
+                            aria-label="Ramo de Atuação" />
+                        <input class="login-input" type="email" name="email" [(ngModel)]="organization.email"
+                            placeholder="E-mail"
+                            aria-label="E-mail" autocomplete="email" />
 
-                    <form class="login-form" novalidate>
-                        <input class="login-input" type="text" name="nome" placeholder="Nome:" autocomplete="name"
-                            required />
-                        <input class="login-input" type="email" name="email" placeholder="Email:" autocomplete="email"
-                            required />
-                        <input class="login-input" type="tel" name="celular" placeholder="Celular:" autocomplete="tel"
-                            required />
-                        <input class="login-input" type="text" name="documento" placeholder="CPF/CNPJ:" required />
-                        <input class="login-input" type="password" name="senha" placeholder="Senha:"
-                            autocomplete="new-password" required />
+                        <div class="login-form-row login-form-row--phone">
+                            <input class="login-input" type="tel" name="ddd" [(ngModel)]="organization.ddd"
+                                placeholder="DDD"
+                                aria-label="DDD" autocomplete="tel-area-code" />
+                            <input class="login-input" type="tel" name="telefone" [(ngModel)]="organization.telefone"
+                                placeholder="Telefone"
+                                aria-label="Telefone" autocomplete="tel-national" />
+                        </div>
+
+                        <fieldset class="login-organization-type">
+                            <legend class="visually-hidden">Tipo de organização</legend>
+                            <label class="login-checkbox-row">
+                                Matriz
+                                <input type="checkbox" name="matriz" [(ngModel)]="organization.matriz" />
+                            </label>
+                            <label class="login-checkbox-row">
+                                Filial
+                                <input type="checkbox" name="filial" [(ngModel)]="organization.filial" />
+                            </label>
+                        </fieldset>
+
+                        <div class="login-form-row login-form-row--address">
+                            <input class="login-input" type="text" name="logradouro"
+                                [(ngModel)]="organization.logradouro" placeholder="Logradouro"
+                                aria-label="Logradouro" autocomplete="address-line1" />
+                            <input class="login-input" type="text" name="numero" [(ngModel)]="organization.numero"
+                                placeholder="Número"
+                                aria-label="Número" autocomplete="address-line2" />
+                        </div>
+                        <input class="login-input" type="text" name="bairro" [(ngModel)]="organization.bairro"
+                            placeholder="Bairro"
+                            aria-label="Bairro" />
+                        <div class="login-form-row login-form-row--location">
+                            <input class="login-input" type="text" name="uf" [(ngModel)]="organization.uf"
+                                placeholder="UF"
+                                aria-label="UF" autocomplete="address-level1" />
+                            <input class="login-input" type="text" name="cep" [(ngModel)]="organization.cep"
+                                placeholder="CEP"
+                                aria-label="CEP" autocomplete="postal-code" />
+                        </div>
 
                         <div class="login-form-footer login-form-footer--end">
-                            <a routerLink="/login" class="btn btn-outline login-step-btn">Avançar</a>
+                            <button class="btn btn-primary" type="button"
+                                (click)="goToStep(2)">Avançar</button>
                         </div>
                     </form>
+                    } @else {
+                    <form class="login-form" aria-label="Cadastro de responsável" novalidate
+                        (submit)="$event.preventDefault()">
+                        <input class="login-input" type="text" name="nomeResponsavel" [(ngModel)]="responsible.nome"
+                            placeholder="Nome"
+                            aria-label="Nome do responsável" autocomplete="name" />
+                        <input class="login-input" type="text" name="inscricaoFederal"
+                            [(ngModel)]="responsible.inscricaoFederal"
+                            placeholder="Inscrição Federal" aria-label="Inscrição Federal" />
+                        <input class="login-input" type="text" name="cargo" [(ngModel)]="responsible.cargo"
+                            placeholder="Cargo" aria-label="Cargo" />
+                        <input class="login-input" type="text" name="login" [(ngModel)]="responsible.login"
+                            aria-label="Login" autocomplete="username" />
+                        <input class="login-input" type="password" name="senha" [(ngModel)]="responsible.senha"
+                            placeholder="Senha"
+                            aria-label="Senha" autocomplete="new-password" />
+
+                        <div class="login-form-footer login-form-footer--between">
+                            <button class="btn btn-primary" type="button"
+                                (click)="goToStep(1)">Voltar</button>
+                            <button class="btn btn-primary" type="button">Cadastrar</button>
+                        </div>
+                    </form>
+                    }
 
                     <p class="login-note"><a routerLink="/index">Voltar para o início</a></p>
                 </div>
@@ -49,13 +116,9 @@
                     </svg>
                 </button>
                 <a routerLink="/index">
-                    <img class="login-brand-logo" src="Logo.png" alt="ReFactor logo" />
+                    <img class="login-brand-logo" src="/img/refac_logo.png" alt="ReFactor logo" />
                 </a>
             </div>
 
         </div>
     </main>
-
-</body>
-
-</html>
