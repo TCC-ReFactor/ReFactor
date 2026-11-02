@@ -13,7 +13,7 @@ export interface ApiConfig {
 export const API_CONFIG = new InjectionToken<ApiConfig>("API_CONFIG", {
   providedIn: "root",
   factory: () => ({
-    baseUrl: "http://localhost:3307/api",
+    baseUrl: "https://refact-api-gteq.onrender.com/api",
     endpoints: {
       login: "/logInto",
       currentProfile: "/perfil/me",
