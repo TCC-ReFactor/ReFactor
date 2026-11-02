@@ -50,24 +50,24 @@ describe("CadastroUser", () => {
   });
 
   it("fills the address fields from Brasil API when the CEP is valid", () => {
-    component.organization.cep = "01001-000";
+    component.organization.cep = "11310-060";
 
     component.lookupAddressByCep();
 
     const request = httpTestingController.expectOne(
-      "https://brasilapi.com.br/api/cep/v1/01001000",
+      "https://brasilapi.com.br/api/cep/v1/11310060",
     );
     expect(request.request.method).toBe("GET");
     request.flush({
-      street: "Praça da Sé",
-      neighborhood: "Sé",
-      city: "São Paulo",
+      street: "Frei Gaspar",
+      neighborhood: "Centro",
+      city: "São Vicente",
       state: "SP",
     });
 
-    expect(component.organization.logradouro).toBe("Praça da Sé");
-    expect(component.organization.bairro).toBe("Sé");
-    expect(component.organization.cidade).toBe("São Paulo");
+    expect(component.organization.logradouro).toBe("Frei Gaspar");
+    expect(component.organization.bairro).toBe("Centro");
+    expect(component.organization.cidade).toBe("São Vicente");
     expect(component.organization.uf).toBe("SP");
     expect(component.cepLookupMessage).toBe("Endereço preenchido pelo CEP.");
     expect(component.isLookingUpCep).toBe(false);
