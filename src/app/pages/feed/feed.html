@@ -1,0 +1,155 @@
+<div class="marketplace" [class.marketplace--escuro]="isDarkTheme()">
+  <header class="site-header site-header--app">
+    <a routerLink="/index" class="site-logo" aria-label="ReFactor - página inicial">
+      <img class="site-logo__image" src="/img/refac_logo.png" alt="ReFactor logo" />
+    </a>
+
+    <form class="search-form" role="search" aria-label="Pesquisar anúncios" (submit)="$event.preventDefault()">
+      <svg class="search-form__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8" />
+        <path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+      </svg>
+      <input class="search-form__input" type="search" name="search" [ngModel]="searchTerm()"
+        (ngModelChange)="searchTerm.set($event)" placeholder="Pesquisar anúncios..." aria-label="Pesquisar anúncios" />
+    </form>
+
+    <div class="site-header__actions">
+      <a routerLink="/cadastro-user" class="btn btn--outline btn--create-ad" aria-label="Criar novo anúncio">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+        Anunciar
+      </a>
+      <a routerLink="/perfil" class="user-avatar" aria-label="Meu perfil">GR</a>
+      <button class="icon-button" type="button" (click)="toggleTheme()"
+        [attr.aria-label]="isDarkTheme() ? 'Ativar modo claro' : 'Ativar modo escuro'"
+        [attr.aria-pressed]="isDarkTheme()">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z" stroke="currentColor"
+            stroke-width="1.6" stroke-linejoin="round" />
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="feed-page">
+    
+    <div class="feed-layout">
+      <section class="feed-list" aria-label="Lista de anúncios">
+        <ul class="ad-list">
+          @for (ad of filteredAds(); track ad.id) {
+            <li class="ad-card">
+              <a class="ad-card__thumbnail" [routerLink]="['/ad-detail', ad.id]"
+                [attr.aria-label]="'Ver anúncio: ' + ad.title">
+                <img [src]="ad.photo" [alt]="ad.title" loading="lazy" />
+              </a>
+              <div class="ad-card__body">
+                <div class="ad-card__header">
+                  <h2 class="ad-card__title">{{ ad.title }}</h2>
+                  <span class="condition-tag">{{ conditionLabels[ad.condicao] }}</span>
+                </div>
+                <p class="ad-card__description">{{ ad.description }}</p>
+                <p class="ad-card__price">{{ formatBRL(ad.price) }}</p>
+                <div class="ad-card__footer">
+                  <div class="ad-card__seller">
+                    <span class="avatar">{{ initials(ad.op) }}</span>
+                    <span class="ad-card__seller-name">{{ ad.op }}</span>
+                    <span class="ad-card__time">{{ ad.time }}</span>
+                  </div>
+                  <a class="btn btn--primary ad-card__link" [routerLink]="['/ad-detail', ad.id]">
+                    Ver anúncio
+                  </a>
+                </div>
+              </div>
+            </li>
+          } @empty {
+            <li class="ad-list__empty">Nenhum anúncio encontrado para os filtros selecionados.</li>
+          }
+        </ul>
+      </section>
+
+      <aside class="feed-sidebar" aria-label="Ordenar e filtrar anúncios">
+        <details class="filter-group" open>
+          <summary>
+            Ordenar
+            <svg class="filter-group__chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </summary>
+          <div class="filter-group__body">
+            <select class="filter-group__select" aria-label="Ordenar anúncios por" [ngModel]="sortOrder()"
+              (ngModelChange)="sortOrder.set($event)">
+              <option value="relevantes">Mais relevantes</option>
+              <option value="recentes">Mais recentes</option>
+              <option value="antigos">Mais antigos</option>
+            </select>
+          </div>
+        </details>
+
+        <details class="filter-group" open>
+          <summary>
+            Preço
+            <svg class="filter-group__chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </summary>
+          <div class="filter-group__body">
+            <select class="filter-group__select" aria-label="Ordenar por preço" [ngModel]="priceOrder()"
+              (ngModelChange)="priceOrder.set($event)">
+              <option value="padrao">Padrão</option>
+              <option value="decrescente">Decrescente</option>
+              <option value="crescente">Crescente</option>
+            </select>
+          </div>
+        </details>
+
+        <details class="filter-group" open>
+          <summary>
+            Categorias
+            <svg class="filter-group__chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </summary>
+          <div class="filter-group__body filter-group__checks">
+            @for (category of categories; track category.value) {
+              <label>
+                <input type="checkbox" [checked]="isCategorySelected(category.value)"
+                  (change)="updateCategory(category.value, $event)" />
+                {{ category.label }}
+              </label>
+            }
+          </div>
+        </details>
+
+        <details class="filter-group" open>
+          <summary>
+            Condição
+            <svg class="filter-group__chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </summary>
+          <div class="filter-group__body filter-group__checks">
+            @for (condition of conditions; track condition.value) {
+              <label>
+                <input type="checkbox" [checked]="isConditionSelected(condition.value)"
+                  (change)="updateCondition(condition.value, $event)" />
+                {{ condition.label }}
+              </label>
+            }
+          </div>
+        </details>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__logo">
+      <img class="site-logo__image" src="/img/refac_logo.png" alt="ReFactor logo" />
+    </div>
+    <p>&copy; 2026 ReFactor. Descarte inteligente, futuro sustentável.</p>
+  </footer>
+</div>

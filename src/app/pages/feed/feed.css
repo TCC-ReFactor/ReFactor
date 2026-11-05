@@ -792,3 +792,11 @@ img {
   }
 
 }
+
+.ad-card__price {
+  margin: 0;
+  color: var(--verde-900);
+  font-family: var(--fonte-titulo);
+  font-size: 1.05rem;
+  font-weight: 700;
+}

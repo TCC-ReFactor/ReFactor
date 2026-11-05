@@ -43,7 +43,7 @@
   --fundo-alt: #eef2ec;    
   --branco: #ffffff;        
   --cinza-texto: #6b7d70;  
-  --cinza-claro: #b7c3ba;  
+  --cinza-claro: #e0e6e1;  
 
   --fonte-titulo: "Space Grotesk", "Inter", sans-serif; 
   --fonte-texto: "Inter", system-ui, sans-serif;       
@@ -440,6 +440,149 @@ h1, h2, h3 {
   transform-origin: center;
 }
 
+.marketplace--escuro {
+  --verde-950: #000000;
+  --verde-900: #2f2f2f;
+  --verde-800: #454746;
+  --verde-700: #454746;
+  --verde-100: #4d4d4d;
+  --texto: #ffffff;
+  --fundo: #3d3d3d;
+  --fundo-alt: #3d3d3d;
+  --branco: #4d4d4d;
+  --cinza-texto: #b7c3ba;
+  --cinza-claro: #454746;
+  --market-black: #000000;
+  --market-dark: #2F2F2F;
+  --market-mid: #454746;
+  --market-green: #37C261;
+  --market-bg: #3D3D3D;
+  --market-surface: #4D4D4D;
+  --market-text: #ffffff;
+  --market-muted: #b7c3ba;
+}
+
+.marketplace {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--fundo);
+  color: var(--texto);
+}
+
+.marketplace > .feed-page {
+  flex: 1;
+}
+
+.marketplace--escuro .site-header,
+.marketplace--escuro .site-footer,
+.marketplace--escuro .feed-sidebar,
+.marketplace--escuro .ad-detail__topbar {
+  background: var(--market-black);
+}
+
+.marketplace--escuro .icon-button,
+.marketplace--escuro .btn--primary,
+.marketplace--escuro .ad-detail__condition .condition-tag {
+  background: var(--market-dark);
+  color: var(--market-text);
+}
+
+.marketplace--escuro .btn--primary:hover,
+.marketplace--escuro .icon-button:hover {
+  background: var(--market-mid);
+}
+
+.marketplace--escuro .feed-page,
+.marketplace--escuro .ad-detail-page {
+  background: var(--market-bg);
+}
+
+.marketplace--escuro .section-heading h1,
+.marketplace--escuro .section-heading p,
+.marketplace--escuro .ad-card__title,
+.marketplace--escuro .ad-card__seller-name,
+.marketplace--escuro .ad-card__price,
+.marketplace--escuro .ad-detail__price,
+.marketplace--escuro .ad-detail__label,
+.marketplace--escuro .ad-detail__title,
+.marketplace--escuro .ad-detail__description-label {
+  color: var(--market-text);
+}
+
+.marketplace--escuro .section-heading p,
+.marketplace--escuro .ad-card__description,
+.marketplace--escuro .ad-card__seller,
+.marketplace--escuro .ad-card__time,
+.marketplace--escuro .ad-detail__item-state,
+.marketplace--escuro .seller__time,
+.marketplace--escuro .ad-detail__description {
+  color: var(--market-muted);
+}
+
+.marketplace--escuro .search-form,
+.marketplace--escuro .filter-group__select {
+  background: var(--market-dark);
+  border-color: var(--market-mid);
+  color: var(--market-text);
+}
+
+.marketplace--escuro .search-form__input,
+.marketplace--escuro .search-form__icon {
+  color: var(--market-text);
+}
+
+.marketplace--escuro .search-form__input::placeholder {
+  color: var(--market-muted);
+}
+
+.marketplace--escuro .ad-card,
+.marketplace--escuro .ad-list__empty,
+.marketplace--escuro .ad-detail__content,
+.marketplace--escuro .ad-detail__info,
+.marketplace--escuro .ad-detail__body {
+  background: var(--market-surface);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.marketplace--escuro .condition-tag {
+  background: var(--market-mid);
+  color: var(--market-text);
+}
+
+.marketplace--escuro .filter-group summary,
+.marketplace--escuro .filter-group .filter-group__chevron,
+.marketplace--escuro .filter-group__checks label,
+.marketplace--escuro .filter-group__select:focus {
+  color: var(--market-text);
+}
+
+.marketplace--escuro .filter-group__select:focus {
+  border-color: var(--market-green);
+}
+
+.marketplace--escuro .filter-group__checks input[type="checkbox"] {
+  accent-color: var(--market-green);
+}
+
+.marketplace--escuro .gallery__viewport,
+.marketplace--escuro .gallery__button {
+  background: var(--market-dark);
+  color: var(--market-text);
+}
+
+.marketplace--escuro .pagination-dot {
+  background: var(--market-mid);
+}
+
+.marketplace--escuro .pagination-dot.is-active {
+  background: var(--market-green);
+}
+
+.marketplace--escuro .ad-detail__loading {
+  color: var(--market-muted);
+}
+
 
 /* =========== Responsive =========== */
 
@@ -453,4 +596,3 @@ h1, h2, h3 {
   .site-header { flex-wrap: wrap; }
   .post-card { width: 168px; }
 }
-

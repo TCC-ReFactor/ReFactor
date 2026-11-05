@@ -1,42 +1,32 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PTP - Anúncio</title>
-  <link rel="stylesheet" href="../../../styles.css" />
-  <link rel="stylesheet" href="feed.css" />
-</head>
-<body>
-
-  <!--  HEADER (fixo, igual às demais páginas)  -->
-
+<div class="marketplace" [class.marketplace--escuro]="temaEscuro()">
   <header class="site-header site-header--app">
-    <a href="../index.html#top" class="site-logo" aria-label="ReFactor - página inicial">
-      <img class="site-logo__image" src="../../../assets/img/Logo (1).png" alt="ReFactor logo" />
+    <a routerLink="/index" class="site-logo" aria-label="ReFactor - página inicial">
+      <img class="site-logo__image" src="/img/refac_logo.png" alt="ReFactor logo" />
     </a>
 
-    <form class="search-form" role="search" aria-label="Pesquisar anúncios" onsubmit="return false;">
+    <form class="search-form" role="search" aria-label="Pesquisar anúncios" (submit)="$event.preventDefault(); search()">
       <svg class="search-form__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/>
-        <path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8" />
+        <path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
       </svg>
-      <input class="search-form__input" type="search" id="search-input" placeholder="Pesquisar anúncios..." aria-label="Pesquisar anúncios" />
+      <input class="search-form__input" type="search" name="search" [ngModel]="searchTerm()"
+        (ngModelChange)="searchTerm.set($event)" placeholder="Pesquisar anúncios..." aria-label="Pesquisar anúncios" />
     </form>
 
     <div class="site-header__actions">
-      <!-- Acesso à página de criação de anúncios -->
-      <a href="#" class="btn btn--outline btn--create-ad" id="create-ad-link" aria-label="Criar novo anúncio">
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <a routerLink="/cadastro-user" class="btn btn--outline btn--create-ad" aria-label="Criar novo anúncio">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
         Anunciar
       </a>
-
-      <!-- Acesso ao perfil do usuário -->
-      <a href="#" class="user-avatar" id="profile-link" aria-label="Meu perfil" style="--avatar-a:#8fdba7;--avatar-b:#1c6b3a;">VH</a>
-
-      <button id="theme-toggle" class="icon-button" type="button" aria-label="Alternar tema claro/escuro">
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <a routerLink="/perfil" class="user-avatar" aria-label="Meu perfil">VH</a>
+      <button class="icon-button" type="button" (click)="toggleTheme()"
+        [attr.aria-label]="temaEscuro() ? 'Ativar modo claro' : 'Ativar modo escuro'"
+        [attr.aria-pressed]="temaEscuro()">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z" stroke="currentColor"
+            stroke-width="1.6" stroke-linejoin="round" />
         </svg>
       </button>
     </div>
@@ -44,25 +34,93 @@
 
   <main class="ad-detail-page">
     <div class="ad-detail">
-
-      <!--  BARRA DE VOLTAR  -->
-
       <div class="ad-detail__topbar">
-        <a href="index.html" class="back-link" aria-label="Voltar para o feed">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <a routerLink="/feed" class="back-link" aria-label="Voltar para o feed">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
           Anúncio
         </a>
       </div>
 
-      <!--  CONTEÚDO  -->
-      <div class="ad-detail__content" id="ad-detail-content">
-        <p class="ad-detail__loading">Carregando anúncio...</p>
-      </div>
+      @if (ad; as anuncio) {
+        <div class="ad-detail__content">
+          <div class="ad-detail__main">
+            <div class="gallery">
+              <div class="gallery__viewport">
+                @for (photo of photoIndexes; track photo) {
+                  <div class="gallery__slide" [class.is-active]="currentPhoto() === photo">
+                    <img [src]="anuncio.photo" [alt]="'Foto de ' + anuncio.title" />
+                  </div>
+                }
 
+                <button class="gallery__button gallery__button--previous" type="button"
+                  (click)="changePhoto(currentPhoto() - 1)" aria-label="Foto anterior">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </button>
+                <button class="gallery__button gallery__button--next" type="button"
+                  (click)="changePhoto(currentPhoto() + 1)" aria-label="Próxima foto">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </button>
+              </div>
+
+              <div class="gallery__dots">
+                @for (photo of photoIndexes; track photo) {
+                  <button class="pagination-dot" [class.is-active]="currentPhoto() === photo"
+                    (click)="changePhoto(photo)" type="button" [attr.aria-label]="'Ir para foto ' + (photo + 1)">
+                  </button>
+                }
+              </div>
+            </div>
+
+            <aside class="ad-detail__info">
+              <p class="ad-detail__price">{{ formatBRL(anuncio.price) }}</p>
+
+              <div class="seller">
+                <span class="avatar avatar--seller">{{ initials(anuncio.op) }}</span>
+                <div>
+                  <p class="seller__name">{{ anuncio.op }}</p>
+                  <p class="seller__time">{{ anuncio.time }}</p>
+                </div>
+              </div>
+
+              <div class="ad-detail__condition">
+                <p class="ad-detail__label">Condição</p>
+                <p class="ad-detail__item-state">
+                  Estado do item: <span class="condition-tag">{{ anuncio.estado }}</span>
+                </p>
+              </div>
+
+              <button class="btn btn--primary btn--buy" type="button">
+                Comprar agora
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M4 4h2l1.6 9.6A2 2 0 0 0 9.57 15.4h7.86a2 2 0 0 0 1.97-1.66L20.5 7H6"
+                    stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                  <circle cx="10" cy="19" r="1.4" fill="currentColor" />
+                  <circle cx="17.5" cy="19" r="1.4" fill="currentColor" />
+                </svg>
+              </button>
+            </aside>
+          </div>
+
+          <div class="ad-detail__body">
+            <h1 class="ad-detail__title">{{ anuncio.title }}</h1>
+            <p class="ad-detail__description-label">Descrição</p>
+            <p class="ad-detail__description">{{ anuncio.fullDescription }}</p>
+          </div>
+        </div>
+      } @else {
+        <div class="ad-detail__content">
+          <p class="ad-detail__loading">Anúncio não encontrado.</p>
+        </div>
+      }
     </div>
   </main>
-
-  <script src="js/ads-data.js"></script>
-  <script src="js/ad-detail.js"></script>
-</body>
-</html>
+</div>
