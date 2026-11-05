@@ -1,53 +1,151 @@
-<main class="account-page">
-  <header class="account-header">
-    <a routerLink="/index">ReFactor</a>
-    <button type="button" class="account-button account-button--secondary" (click)="logout()">
-      Sair
+<div class="perfil">
+  <header class="perfil-header">
+    <a class="perfil-header__voltar" routerLink="/feed" aria-label="Voltar para o feed">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M15 5 8 12l7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+          stroke-linejoin="round" />
+      </svg>
+    </a>
+    <h1 class="perfil-header__titulo">Meu perfil</h1>
+    <button class="perfil-header__btn perfil-header__sair" type="button" (click)="logout()" aria-label="Sair da conta">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M10 4H6.5A1.5 1.5 0 0 0 5 5.5v13A1.5 1.5 0 0 0 6.5 20H10" stroke="currentColor"
+          stroke-width="1.6" stroke-linecap="round" />
+        <path d="m13 8.5 3.5 3.5-3.5 3.5M16.5 12H9" stroke="currentColor" stroke-width="1.6"
+          stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <span>Sair</span>
     </button>
   </header>
 
-  <section class="account-content" aria-labelledby="profile-title">
-    <h1 id="profile-title">Meu perfil</h1>
-
-    @if (isLoading) {
-      <p role="status">Carregando seu perfil...</p>
-    } @else if (errorMessage) {
-      <p class="account-error" role="alert">{{ errorMessage }}</p>
-    } @else if (profile) {
-      <section class="profile-card" aria-label="Dados do usuário">
-        <h2>{{ profile.nome || profile.login }}</h2>
-        <p>Login: {{ profile.login }}</p>
-        @if (profile.email) {
-          <p>E-mail: {{ profile.email }}</p>
+  <main class="perfil-main">
+    <div class="perfil-capa">
+      @if (capa) {
+        <img class="perfil-capa__imagem" [src]="capa" alt="Imagem de capa do perfil" />
+      }
+      <div class="perfil-capa__acoes">
+        @if (capa) {
+          <button class="perfil-capa__botao" type="button" (click)="removerCapa()"
+            aria-label="Remover imagem de capa">
+            Remover capa
+          </button>
         }
-      </section>
+        <label class="perfil-capa__botao">
+          Alterar capa
+          <input id="upload-capa" class="arquivo-oculto" type="file" accept="image/*"
+            (change)="selecionarCapa($event)" aria-label="Selecionar imagem de capa" />
+        </label>
+      </div>
+    </div>
 
-      <section class="ads-section" aria-labelledby="ads-title">
-        <h2 id="ads-title">Meus anúncios</h2>
-        @if (ads.length === 0) {
-          <p>Você ainda não possui anúncios.</p>
-        } @else {
-          <ul class="ads-list">
-            @for (ad of ads; track ad.id) {
-              <li class="ad-card">
-                <div>
-                  <h3>{{ ad.title }}</h3>
-                  <p>{{ ad.description }}</p>
-                  @if (ad.price !== undefined) {
-                    <p>{{ ad.price | currency: "BRL" }}</p>
-                  }
-                </div>
-                <a
-                  class="account-button"
-                  [routerLink]="['/anuncios', ad.id, 'editar']"
-                >
-                  Editar anúncio
-                </a>
-              </li>
+    <section class="perfil-topo" aria-labelledby="profile-title">
+      <label class="perfil-avatar" title="Alterar foto do perfil">
+        @if (foto) {
+          <img class="perfil-avatar__imagem" [src]="foto" alt="Foto do perfil" />
+        } @else if (profile) {
+          <span class="perfil-avatar__iniciais">{{ iniciais }}</span>
+        }
+        @if (!foto) {
+          <span class="perfil-avatar__editar" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M4 8.5A1.5 1.5 0 0 1 5.5 7h2l1.2-2h6.6l1.2 2h2A1.5 1.5 0 0 1 20 8.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 17.5v-9Z"
+                stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" />
+              <circle cx="12" cy="13" r="3.2" stroke="currentColor" stroke-width="1.7" />
+            </svg>
+          </span>
+        }
+        <input id="upload-foto" class="arquivo-oculto" type="file" accept="image/*"
+          (change)="selecionarFoto($event)" aria-label="Selecionar foto do perfil" />
+      </label>
+      <h2 class="perfil-nome" id="profile-title">
+        {{ profile?.nome || profile?.login || "Meu perfil" }}
+      </h2>
+      @if (profile?.nome && profile?.login) {
+        <p class="perfil-cargo">{{ profile?.login }}</p>
+      }
+    </section>
+
+    <div class="perfil-conteudo">
+      @if (imageError) {
+        <p class="perfil-status perfil-status--erro" role="alert">{{ imageError }}</p>
+      }
+      @if (isLoading) {
+        <p class="perfil-status" role="status">Carregando seu perfil...</p>
+      } @else if (errorMessage) {
+        <p class="perfil-status perfil-status--erro" role="alert">{{ errorMessage }}</p>
+      } @else if (profile) {
+        <section class="perfil-bloco" aria-labelledby="titulo-dados">
+          <h2 class="perfil-bloco__titulo" id="titulo-dados">Meus dados</h2>
+
+          <dl class="dados-grade">
+            <div class="dado">
+              <dt class="dado__label">Nome</dt>
+              <dd class="dado__valor">{{ profile.nome || "Não informado" }}</dd>
+            </div>
+            <div class="dado">
+              <dt class="dado__label">Login</dt>
+              <dd class="dado__valor">{{ profile.login }}</dd>
+            </div>
+            @if (profile.email) {
+              <div class="dado dado--largo">
+                <dt class="dado__label">E-mail</dt>
+                <dd class="dado__valor dado__valor--email">{{ profile.email }}</dd>
+              </div>
             }
+          </dl>
+        </section>
+
+        <section class="perfil-bloco" aria-labelledby="titulo-historico">
+          <h2 class="perfil-bloco__titulo" id="titulo-historico">Resumo</h2>
+          <ul class="historico">
+            <li class="stat">
+              <svg class="stat__icone" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="2" stroke="currentColor" stroke-width="1.6" />
+                <circle cx="9" cy="9" r="1.6" stroke="currentColor" stroke-width="1.4" />
+                <path d="m4 17 5-5 4 4 3-3 4 4" stroke="currentColor" stroke-width="1.5"
+                  stroke-linejoin="round" />
+              </svg>
+              <strong class="stat__numero">{{ ads.length }}</strong>
+              <span class="stat__rotulo">Anúncios publicados</span>
+            </li>
           </ul>
-        }
-      </section>
-    }
-  </section>
-</main>
+        </section>
+
+        <section class="perfil-bloco" aria-labelledby="titulo-anuncios">
+          <h2 class="perfil-bloco__titulo" id="titulo-anuncios">Meus anúncios</h2>
+          <p class="anuncios-contagem">{{ ads.length }} anúncios publicados</p>
+
+          @if (ads.length === 0) {
+            <p class="anuncios-vazio">Você ainda não possui anúncios.</p>
+          } @else {
+            <ul class="anuncios">
+              @for (ad of ads; track ad.id) {
+                <li class="anuncio">
+                  <div class="anuncio__icone" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <rect x="3.5" y="3.5" width="17" height="17" rx="2" stroke="currentColor"
+                        stroke-width="1.6" />
+                      <circle cx="9" cy="9" r="1.6" stroke="currentColor" stroke-width="1.4" />
+                      <path d="m4 17 5-5 4 4 3-3 4 4" stroke="currentColor" stroke-width="1.5"
+                        stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                  <div class="anuncio__info">
+                    <h3 class="anuncio__titulo">{{ ad.title }}</h3>
+                    <p class="anuncio__descricao">{{ ad.description }}</p>
+                    @if (ad.price !== undefined) {
+                      <p class="anuncio__preco">{{ ad.price | currency: "BRL" }}</p>
+                    }
+                  </div>
+                  <a class="btn btn--primario anuncio__editar" [routerLink]="['/anuncios', ad.id, 'editar']">
+                    Editar anúncio
+                  </a>
+                </li>
+              }
+            </ul>
+          }
+        </section>
+      }
+    </div>
+  </main>
+</div>

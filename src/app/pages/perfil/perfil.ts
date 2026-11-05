@@ -16,6 +16,19 @@ export class Perfil implements OnInit {
   ads: UserAd[] = [];
   errorMessage = "";
   isLoading = true;
+  foto: string | null = null;
+  capa: string | null = null;
+  imageError = "";
+
+  get iniciais(): string {
+    const nome = this.profile?.nome || this.profile?.login || "";
+    return nome
+      .split(/\s+/)
+      .filter(Boolean)
+      .slice(0, 2)
+      .map((parte) => parte[0].toUpperCase())
+      .join("");
+  }
 
   constructor(
     private readonly accountService: AccountService,
@@ -46,5 +59,56 @@ export class Perfil implements OnInit {
   logout(): void {
     this.authService.logout();
     void this.router.navigateByUrl("/login");
+  }
+
+  selecionarFoto(event: Event): void {
+    this.lerImagem(event, (imagem) => {
+      this.foto = imagem;
+    });
+  }
+
+  selecionarCapa(event: Event): void {
+    this.lerImagem(event, (imagem) => {
+      this.capa = imagem;
+    });
+  }
+
+  removerCapa(): void {
+    this.capa = null;
+  }
+
+  private lerImagem(event: Event, aoCarregar: (imagem: string) => void): void {
+    const input = event.target;
+    if (!(input instanceof HTMLInputElement)) {
+      this.imageError = "Não foi possível selecionar a imagem.";
+      return;
+    }
+
+    const [arquivo] = input.files ?? [];
+    input.value = "";
+    this.imageError = "";
+
+    if (!arquivo) {
+      return;
+    }
+
+    if (!arquivo.type.startsWith("image/")) {
+      this.imageError = "Selecione um arquivo de imagem válido.";
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (typeof reader.result !== "string") {
+        this.imageError = "Não foi possível carregar a imagem selecionada.";
+        return;
+      }
+
+      aoCarregar(reader.result);
+    };
+    reader.onerror = () => {
+      this.imageError = "Ocorreu um erro ao ler a imagem. Tente novamente.";
+    };
+    reader.readAsDataURL(arquivo);
   }
 }
